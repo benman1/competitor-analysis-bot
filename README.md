@@ -17,6 +17,11 @@ poetry install --with dev
 poetry run langgraph up --port 8317
 ```
 
+Please note that there've been some changes to LangGraph, in particular, to the use of Redis. I had to make sure to use the latest version of the langgraph-cli:
+```bash
+poetry add langgraph-cli@latest
+```
+
 Then start a run:
 
 ```python
@@ -40,4 +45,9 @@ async for chunk in client.runs.stream(
     thread["thread_id"], agent["assistant_id"], input=input
 ):
     print(chunk)
+```
+
+Please see the `research_script.py` file for a working example. When you have langgraph running, you can run:
+```bash
+poetry run python research_script.py
 ```
